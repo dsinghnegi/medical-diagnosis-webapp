@@ -1,5 +1,6 @@
 # Training models 
-We will be using transfer learning on inception V3 module
+We will be using transfer learning on inception V3 model.
+Dataset used
 - Skin cancer Mnist Dataset https://www.kaggle.com/kmader/skin-cancer-mnist-ham10000/
 - Chest X-ray pneumonia Dataset https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia
 
