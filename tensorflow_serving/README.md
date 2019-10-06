@@ -1,4 +1,5 @@
 # Serving the model
+We will be using tensorflow serving for our application.
 TensorFlow Serving is a flexible, high-performance serving system for machine learning models, designed for production environments. For more detail checkout the git: https://github.com/tensorflow/serving
 
 ## Quickstart 
