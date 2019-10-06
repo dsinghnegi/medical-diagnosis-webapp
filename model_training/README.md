@@ -8,6 +8,5 @@ Dataset used
 Just open any notebook and start training
 
 ## References 
--https://www.kaggle.com/dipeshpoudel/machine-learning-with-breast-cancer-data
--
+- https://www.kaggle.com/dipeshpoudel/machine-learning-with-breast-cancer-data
 
