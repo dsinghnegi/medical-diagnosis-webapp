@@ -5,4 +5,9 @@ Dataset used
 - Chest X-ray pneumonia Dataset https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia
 
 ## Quickstart
-Just open any notebook and get started
+Just open any notebook and start training
+
+## References 
+-https://www.kaggle.com/dipeshpoudel/machine-learning-with-breast-cancer-data
+-
+
