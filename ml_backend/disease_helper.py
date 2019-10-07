@@ -8,6 +8,19 @@ from tensorflow.keras.applications.inception_v3 import InceptionV3, preprocess_i
 from keras.preprocessing import image
 import pickle
 
+def top_3_accuracy(y_true, y_pred):
+    return top_k_categorical_accuracy(y_true, y_pred, k=3)
+
+def top_2_accuracy(y_true, y_pred):
+    return top_k_categorical_accuracy(y_true, y_pred, k=2)
+
+
+def read_keras__model(input_model):
+	"""  We will be use this function when serving is off"""
+	tf.keras.backend.set_learning_phase(0)  
+	model = tf.keras.models.load_model(input_model,custom_objects={"top_2_accuracy": top_2_accuracy,"top_3_accuracy":top_3_accuracy})
+	return model
+
 def read_pkl(path):
 	with open(path, 'rb') as handle:
 		classifier=pickle.load(handle)
@@ -33,6 +46,12 @@ class disease_predictor(object):
 		label=model_info["CLASS_LABEL"][np.argmax(pred[0])]
 		return label.upper(),np.max(pred[0])
 
+	def image_prediction(self,model_info,data):
+		return self.serving_based_prediction(config.SKIN_CANCER,data)
+		
+
+
+
 	def pickle_based_classification(self,model_info,data):
 		classifier=read_pkl(model_info['path'])
 		label=model_info["CLASS_LABEL"][classifier.predict([data])[0]]
@@ -40,10 +59,10 @@ class disease_predictor(object):
 		return label.upper()
 
 	def skin_cancer(self,data):
-		return self.serving_based_prediction(config.SKIN_CANCER,data)
+		return self.image_prediction(config.SKIN_CANCER,data)
 
 	def chest_xray(self,data):
-		return self.serving_based_prediction(config.CHEST_XRAY,data)
+		return self.image_prediction(config.CHEST_XRAY,data)
 
 	def breast_cancer(self,data):
 		model_info=config.MODEL_INFO['breast_cancer']
