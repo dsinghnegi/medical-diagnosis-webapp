@@ -9,13 +9,13 @@ def index():
     return render_template('index.html', title='Home')
 
 
-@app.route('/upload')
-def upload_file2():
-   return render_template('index.html')
+@app.route('/upload',methods=['GET','POST'])
+def upload():
+   return render_template('uploaded.html')
 
 @app.route('/map')
 def map():
-    return render_template('map.html', title='Map')
+    return render_template('uploaded.html', title='Map')
 
 
 @app.route('/map/refresh', methods=['POST'])
