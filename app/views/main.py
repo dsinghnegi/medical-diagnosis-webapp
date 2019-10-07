@@ -15,6 +15,38 @@ def index():
 	return render_template('index.html', title='Home')
 
 
+
+@app.route('/chestXray',methods=['POST'])
+def chestXray():
+	# print(Image_path=request.form['fileToUpload'])
+	# graphJSON = jsonify(request.form['fileToUpload'])
+	file=request.files['fileToUpload']
+	filepath=os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+	file.save(filepath)
+	# with open(filepath, "rb") as image_file:
+	#     encoded_string = base64.b64encode(image_file.read())
+	data=dp.read_image(filepath)
+	prediction,score=dp.chest_xray(data)
+	score=round(score*100)
+
+	return render_template('uploaded.html',predictions=prediction,score=score,image_path=os.path.join(app.config['UPLOAD_FOLDER'].split('/')[-1], file.filename))
+
+@app.route('/skincancer',methods=['POST'])
+def skincancer():
+	# print(Image_path=request.form['fileToUpload'])
+	# graphJSON = jsonify(request.form['fileToUpload'])
+	file=request.files['fileToUpload']
+	filepath=os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+	file.save(filepath)
+	# with open(filepath, "rb") as image_file:
+	#     encoded_string = base64.b64encode(image_file.read())
+	data=dp.read_image(filepath)
+	prediction,score=dp.skin_cancer(data)
+	score=round(score*100)
+
+	return render_template('uploaded.html',predictions=prediction,score=score,image_path=os.path.join(app.config['UPLOAD_FOLDER'].split('/')[-1], file.filename))
+
+
 @app.route('/upload',methods=['POST'])
 def upload_file2():
 	# print(Image_path=request.form['fileToUpload'])

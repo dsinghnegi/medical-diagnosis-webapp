@@ -6,36 +6,144 @@
 
 {% block content %}
 
-	<h1 class="ui header">{{ title }}</h1>
 
 	{% if current_user.is_authenticated %}
-	<h2 class="ui header">Hi {{ current_user.first_name }}!</h2>
-	<!DOCTYPE html>
+	
+<!DOCTYPE html>
 <html>
 <body>
+<h2><font color='orange'>Our services!</font></h2>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card" >
+          <img src="static/img/PD.jpeg" class="card-img-top img img-responsive full-width" alt="Detect Pneumonia<">
+          <div class="card-body">
+            <h5 class="card-title">Detect Pneumonia</h5>
+            <p class="card-text">Select x-ray file to upload:</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chestdemo">
+            Demo
+            </button>
+          </div>
+        </div>
+        </div>
 
-<h1 style="color:orange;">Detect Breast cancer</h1>
-<form action="upload" method="post" enctype="multipart/form-data">
-    Select breast cancer image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-</form>
+    <div class="col-md-4">
+        <div class="card" >
+          <img src="static/img/BC.jpeg" class="card-img-top img img-responsive full-width" alt="Detect Breast cancer">
+          <div class="card-body">
+            <h5 class="card-title">Detect Breast cancer</h5>
+            <p class="card-text">Select breast cancer image to upload</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bcdemo">
+            Demo
+            </button>
+          </div>
 
-<h1 style="color:orange;">Detect Skin cancer</h1>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card" >
+          <img src="static/img/SC.jpeg" class="card-img-top img img-responsive full-width" alt="Detect Skin cancer">
+          <div class="card-body">
+            <h5 class="card-title">Detect Skin cancer</h5>
+            <p class="card-text">Select skin cancer image to upload</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scdemo">
+            Demo
+            </button>
+          </div>
+        </div>
+    </div>
+</div>
 
-<form action="upload" method="post" enctype="multipart/form-data">
-    Select skin cancer image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-</form>
 
-<h1 style="color:orange;">Detect Pneumonia</h1>
+<!-- Modal -->
+<div class="modal fade" id="chestdemo" tabindex="-1" role="dialog" aria-labelledby="Chest X-ray Demo" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detect Pneumonia</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="chestXray" method="post" enctype="multipart/form-data">
+          <div class="modal-body">
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Select breast cancer image to upload</label>
+                <input type="file" name="fileToUpload" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                <input type="submit"  class="btn btn-primary" value="Upload Image" lass="btn btn-primary" name="submit">
 
-<form action="upload" method="post" enctype="multipart/form-data">
-    Select x-ray file to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-</form>
+            </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="bcdemo" tabindex="-1" role="dialog" aria-labelledby="Chest X-ray Demo" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detect Breast cancer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="chestXray" method="post" enctype="multipart/form-data">
+          <div class="modal-body">
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Select breast cancer image to upload</label>
+                <input type="file" name="fileToUpload" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                <input type="submit"  class="btn btn-primary" value="Upload Image" lass="btn btn-primary" name="submit">
+
+            </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="scdemo" tabindex="-1" role="dialog" aria-labelledby="Chest X-ray Demo" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detect Skin cancer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form  action="skincancer" method="post" enctype="multipart/form-data">
+          <div class="modal-body">
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Select skin cancer image to upload</label>
+                <input type="file" name="fileToUpload" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                <input type="submit"  class="btn btn-primary" value="Upload Image" lass="btn btn-primary" name="submit">
+
+            </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
 
 </body>
 </html>
