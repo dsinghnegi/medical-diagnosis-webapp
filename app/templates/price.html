@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    {{ super() }}
+    <!-- Leaflet JS -->
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
+    <!-- Leaflet CSS -->
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet'/>
+    <!-- Map style -->
+    <style>
+    #map {
+        height: 600px;
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+       <h1 class="ui header">{{ title }}</h1>
+
+    
+{% endblock %}

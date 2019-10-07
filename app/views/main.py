@@ -62,9 +62,9 @@ def upload_file2():
 
 	return render_template('uploaded.html',predictions=prediction,score=score,image_path=os.path.join(app.config['UPLOAD_FOLDER'].split('/')[-1], file.filename))
 
-@app.route('/map')
-def map():
-	return render_template('map.html', title='Map')
+@app.route('/price')
+def price():
+	return render_template('price.html', title='Pricing')
 
 
 @app.route('/map/refresh', methods=['POST'])
