@@ -10,7 +10,7 @@
 <html>
 <head>
 	<body>
-	<img src="{{image_path}}" alt="prediction image" width="500px">
+	<img src="{{image_path}}" alt="{{cat}}" id="image_for_detection" width="500px">
 
 
 					<style>
@@ -40,9 +40,9 @@ tr:nth-child(even) {
     <th>Disease</th>
     <th>Percent Likelihood</th>
   </tr>
-  <tr>
-    <td>{{ predictions }}</td>
-    <td>{{ score}}</td>
+  <tr id="prediction">
+    <td >Loading ...</td>
+    <td >Loading ...</td>
   </tr>
 </table>
 
@@ -51,8 +51,11 @@ tr:nth-child(even) {
     <title>Index</title>
 </head>
 <body>
+<script src="{{ url_for('static', filename='js/main.js') }}" type="text/javascript"></script>    
+
 </body>
 </html>
 
 
 {% endblock %}
+

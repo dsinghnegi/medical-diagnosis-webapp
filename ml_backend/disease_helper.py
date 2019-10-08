@@ -64,9 +64,9 @@ class disease_predictor(object):
 
 	def image_prediction(self,model_info,data):
 		if TF_SERVING:
-			return self.serving_based_prediction(config.SKIN_CANCER,data)
+			return self.serving_based_prediction(model_info,data)
 		else:
-			return 	self.keras_model_based_prediction(config.SKIN_CANCER,data)
+			return 	self.keras_model_based_prediction(model_info,data)	
 
 	def keras_model_based_prediction(self,model_info,data):
 		img = image.img_to_array(data)
@@ -74,6 +74,7 @@ class disease_predictor(object):
 		img = preprocess_input(img)
 		# print(model_info)
 		model = read_keras__model(model_info["PATH"])
+		# model=self.models[model_info["MODEL"]]
 		# with graph.as_default():
 		pred=model.predict(img)
 		label=model_info["CLASS_LABEL"][np.argmax(pred[0])]

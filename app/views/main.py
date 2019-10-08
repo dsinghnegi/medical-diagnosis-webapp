@@ -25,11 +25,10 @@ def chestXray():
 	file.save(filepath)
 	# with open(filepath, "rb") as image_file:
 	#     encoded_string = base64.b64encode(image_file.read())
-	data=dp.read_image(filepath)
-	prediction,score=dp.chest_xray(data)
-	score=round(score*100)
+	prediction="Loading..."
+	score="Loading..."
 
-	return render_template('uploaded.html',predictions=prediction,score=score,image_path=os.path.join(app.config['UPLOAD_FOLDER'].split('/')[-1], file.filename))
+	return render_template('uploaded.html',predictions=prediction,score=score,image_path=os.path.join(app.config['UPLOAD_FOLDER'].split('/')[-1], file.filename),filelocation=filepath,cat='chest')
 
 @app.route('/skincancer',methods=['POST'])
 def skincancer():
@@ -40,11 +39,13 @@ def skincancer():
 	file.save(filepath)
 	# with open(filepath, "rb") as image_file:
 	#     encoded_string = base64.b64encode(image_file.read())
-	data=dp.read_image(filepath)
-	prediction,score=dp.skin_cancer(data)
-	score=round(score*100)
+	# data=dp.read_image(filepath)
+	# prediction,score=dp.skin_cancer(data)
+	# score=round(score*100)
+	prediction="Loading..."
+	score="Loading..."
 
-	return render_template('uploaded.html',predictions=prediction,score=score,image_path=os.path.join(app.config['UPLOAD_FOLDER'].split('/')[-1], file.filename))
+	return render_template('uploaded.html',predictions=prediction,score=score,image_path=os.path.join(app.config['UPLOAD_FOLDER'].split('/')[-1], file.filename),filelocation=filepath,cat="skin")
 
 
 @app.route('/upload',methods=['POST'])
@@ -65,6 +66,27 @@ def upload_file2():
 @app.route('/price')
 def price():
 	return render_template('price.html', title='Pricing')
+
+
+
+@app.route('/service',methods=['POST'])
+def service():
+	print("********************************************************************")
+	filepath=os.path.join(app.config['UPLOAD_FOLDER'],request.form['image_path'].split('/')[-1])
+	service=request.form['service'].replace(" ",'')
+	print('#',service,'#')
+	data=dp.read_image(filepath)
+	if 'chest' in service  :
+		print('#########################################################')
+		prediction,score=dp.chest_xray(data)
+		score=round(score*100)
+	else:
+		print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+		prediction,score=dp.skin_cancer(data)
+		score=round(score*100)
+	print("********************************************************************")
+	print(prediction,score)
+	return render_template('result.html', prediction=prediction,scores=score)
 
 
 @app.route('/map/refresh', methods=['POST'])
