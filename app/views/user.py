@@ -37,9 +37,13 @@ def signup():
             confirmation=False,
             password=form.password.data,
         )
+        print(user)
+
         # Insert the user in the database
         db.session.add(user)
+        print('#################################')
         db.session.commit()
+        print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
         # Subject of the confirmation email
         subject = 'Please confirm your email address.'
         # Generate a random token
