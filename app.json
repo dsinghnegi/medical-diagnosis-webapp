@@ -4,6 +4,7 @@
   "image": "heroku/python",
   "repository": "https://github.com/dsinghnegi/medical-diagnosis-webapp",
   "keywords": ["python", "flask" ],
+  "addons": [ "heroku-postgresql" ],
   "env": {
     "SECRET_KEY": {
       "description": "The secret key for the flask application.",
