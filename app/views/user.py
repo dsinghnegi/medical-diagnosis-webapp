@@ -86,6 +86,10 @@ def signin():
     if form.validate_on_submit():
         user = models.User.query.filter_by(email=form.email.data).first()
         # Check the user exists
+        print("#####################################################")
+        print(form.email.data,form.password.data)
+        print("#####################################################")
+        
         if user is not None:
             # Check the password is correct
             if user.check_password(form.password.data):
