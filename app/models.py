@@ -28,10 +28,10 @@ class User(db.Model, UserMixin):
 
     @password.setter
     def password(self, plaintext):
-        self._password = bcrypt.generate_password_hash(plaintext)
+        self._password = plaintext
 
     def check_password(self, plaintext):
-        return bcrypt.check_password_hash(self.password,plaintext)
+        return self.password==plaintext
 
     def get_id(self):
         return self.email
