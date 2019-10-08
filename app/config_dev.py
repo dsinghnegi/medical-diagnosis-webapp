@@ -13,7 +13,7 @@ SECRET_KEY = 'houdini'
 ADMIN_CREDENTIALS = ('admin', 'pa$$word')
 
 # Database choice
-SQLALCHEMY_DATABASE_URI = 'sqlite:///app.db'
+SQLALCHEMY_DATABASE_URI = 'postgres://ypksxsbmzezghb:c51873c042b48b3d1c8d6a5313819386bd1e16ce5127cfbe99aedda7d9f9c774@ec2-54-83-13-145.compute-1.amazonaws.com:5432/d8s4a71o7jdk39'
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 # Configuration of a Gmail account for sending mails
