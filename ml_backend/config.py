@@ -1,3 +1,7 @@
+
+"""Change it to true for tensorflow serving """
+TF_SERVING=False
+
 MODEL_INFO={
 	"breast_cancer":{
 		"path":"models/classifiers/breat_cancer_classifier.pickle",
@@ -18,11 +22,13 @@ MODEL_INFO={
 
 
 SKIN_CANCER={
+	"PATH": "models/keras_model/sc_model_1.h5",
 	"CLASS_LABEL":['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc'],
 	"MODEL": "skin_cancer_model_model"
 }
 
 CHEST_XRAY={
+	"PATH": "models/keras_model/chest_model.h5",
 	"CLASS_LABEL":['NORMAL','PNEUMONIA'],
 	"MODEL": "chest_model"
 }
