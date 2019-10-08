@@ -2,5 +2,5 @@
 *.log
 *.pyc
 .git/
-config.py
+
 
