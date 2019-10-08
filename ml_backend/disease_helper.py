@@ -5,7 +5,7 @@ import json
 import numpy as np
 import requests
 from tensorflow.keras.applications.inception_v3 import InceptionV3, preprocess_input
-from keras.preprocessing import image
+from tensorflow.keras.preprocessing import image
 import pickle
 
 def top_3_accuracy(y_true, y_pred):
