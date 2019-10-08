@@ -16,3 +16,4 @@ WTForms==2.1
 stripe==2.21.0
 tensorflow
 psycopg2
+Pillow
